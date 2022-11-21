@@ -1,27 +1,28 @@
 package com.prokhach.simpleweatherapp.view.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.prokhach.simpleweatherapp.R
+import com.prokhach.simpleweatherapp.databinding.ItemMainDailyBinding
 
-class MainDailyListAdapter : RecyclerView.Adapter<MainDailyListAdapter.DailyViewHolder>() {
+class MainDailyListAdapter : BaseAdapter<MainDailyListAdapter.DailyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main_daily, parent, false)
-        return DailyViewHolder(view)
+
+        val binding = ItemMainDailyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return DailyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: DailyViewHolder, position: Int) {
+    inner class DailyViewHolder(private val binding: ItemMainDailyBinding) : BaseViewHolder(binding.root) {
 
-    }
-
-    override fun getItemCount(): Int {
-        return 15
-    }
-
-    inner class DailyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+        override fun bindView(position: Int) {
+            with(binding) {
+                itemDailyDateTv.text = "20 Saturday"
+                itemDailyPopTv.text = "80 %"
+                itemDailyMaxTempTv.text = "27°"
+                itemDailyMinTempTv.text = "13°"
+                itemDailyWeatherConditionIcon.setImageResource(R.drawable.ic_sun)
+            }
+        }
     }
 }
