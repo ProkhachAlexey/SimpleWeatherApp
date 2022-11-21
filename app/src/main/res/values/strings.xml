@@ -4,4 +4,5 @@
     <string name="max">max</string>
     <string name="menu_button">menu button</string>
     <string name="settings_button">settings button</string>
+    <string name="some_description">some description</string>
 </resources>

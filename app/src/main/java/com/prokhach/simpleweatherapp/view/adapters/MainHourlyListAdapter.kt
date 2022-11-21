@@ -1,27 +1,29 @@
 package com.prokhach.simpleweatherapp.view.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.prokhach.simpleweatherapp.R
+import com.prokhach.simpleweatherapp.business.model.HourlyWeatherModel
+import com.prokhach.simpleweatherapp.databinding.ItemMainHourlyBinding
 
-class MainHourlyListAdapter : RecyclerView.Adapter<MainHourlyListAdapter.HourlyViewHolder>() {
+
+class MainHourlyListAdapter : BaseAdapter<HourlyWeatherModel>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main_hourly, parent, false)
-        return HourlyViewHolder(view)
+
+        val binding = ItemMainHourlyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HourlyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HourlyViewHolder, position: Int) {
+    inner class HourlyViewHolder(private val binding: ItemMainHourlyBinding) : BaseViewHolder(binding.root) {
 
-    }
-
-    override fun getItemCount(): Int {
-        return 10
-    }
-
-    inner class HourlyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+        override fun bindView(position: Int) {
+            with(binding) {
+                itemHourlyTimeTv.text = "14.00"
+                itemHourlyTempTv.text = "14\u00b0"
+                itemHourlyPopTv.text = "30 %"
+                itemHourlyWeatherConditionIcon.setImageResource(R.drawable.ic_sun)
+            }
+        }
     }
 }
